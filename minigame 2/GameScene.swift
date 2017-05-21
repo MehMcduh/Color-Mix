@@ -79,6 +79,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     // END OF CHEATSHEET 2
     
+    
+    
     func spawnAndFadeCoins() -> () {
         
         let randNum = arc4random()%6 + 1
@@ -130,14 +132,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                                         self.missedNumber.text = "\(self.missed)"
                                                         if self.missed == 3 {
                                                             self.pauseTest = true
-                                                           let transition2 = SKTransition.fade(withDuration: 1)
+                                                            let transition2 = SKTransition.fade(withDuration: 1)
                                                             let gameOver = SKScene(fileNamed: "GameOver") as! GameOver
                                                             gameOver.score = self.score
                                                             gameOver.newHighScore = self.newHighScore
                                                             gameOver.scaleMode = .aspectFill
-                                                            self.view?.presentScene(gameOver, transition: transition2)
+                                                            if GameSounds.sharedInstance.soundIsMuted == false {
+                                                                self.run(self.missedSound,completion: {self.view?.presentScene(gameOver, transition: transition2)})
+                                                            }else{
+                                                                self.view?.presentScene(gameOver, transition: transition2)
+                                                            }
                                                         }
-                                                        
                                                         
                 }])
             anotherCoin.run(SKAction.repeatForever(disappearForStar))

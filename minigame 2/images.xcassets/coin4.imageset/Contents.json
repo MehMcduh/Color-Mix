@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "starcoin.png",
+      "filename" : "coin4.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "starcoin@2x.png",
+      "filename" : "coin4@2x.png",
       "scale" : "2x"
     },
     {
